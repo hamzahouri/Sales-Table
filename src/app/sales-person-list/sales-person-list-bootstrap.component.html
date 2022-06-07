@@ -1,0 +1,24 @@
+<table class="table table-hover">
+  <thead class="thead-dark">
+    <tr>
+      <th>First name</th>
+      <th>Last name</th>
+      <th>Email name</th>
+      <th>Sales Volume</th>
+      <th>Meet Quota</th>
+    </tr>
+  </thead>
+<tbody>
+  <tr *ngFor="let x of salesPersonList" [ngClass]="{ 'meet' :x.salesVolum>2500, 'notmeet':x.salesVolum<2500}">
+    <th>{{x.firstName}}</th>
+    <th>{{x.lastName}}</th>
+    <th>{{x.email}}</th>
+    <th>{{x.salesVolum |currency:'USD'}}</th>
+    <th>
+      <div *ngIf="x.salesVolum>2500;else notMeet">Yes</div>
+      <ng-template #notMeet>Not</ng-template>
+    </th>
+
+  </tr>
+</tbody>
+</table>
